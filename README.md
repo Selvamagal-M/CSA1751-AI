@@ -64,4 +64,23 @@ A* Algorithm
                 f_score = tentative_g + heuristic(neighbor, goal)
                 heapq.heappush(open_list, (f_score, neighbor))
                 came_from[neighbor] = current
+
+Min-Max  
+
+           def minimax(depth, node_index, is_max, scores, h):
+    if depth == h:
+        return scores[node_index]
+
+    if is_max:
+        best = -math.inf
+        for i in range(2):
+            val = minimax(depth + 1, node_index * 2 + i, False, scores, h)
+            best = max(best, val)
+        return best
+    else:
+        best = math.inf
+        for i in range(2):
+            val = minimax(depth + 1, node_index * 2 + i, True, scores, h)
+            best = min(best, val)
+        return best
                 
