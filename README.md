@@ -98,3 +98,34 @@ Greedy Best-First Search (GBFS)
     for neighbor in graph[node]:
         priority = heuristics[neighbor]
         heapq.heappush(pq, (priority, neighbor, path + [neighbor]))
+Alpha-Beta Pruning 
+
+
+     def alpha_beta(depth, index, is_max, scores, h, alpha, beta):
+    if depth == h:
+        return scores[index]
+
+    if is_max:
+        best = -math.inf
+        for i in range(2):
+            val = alpha_beta(depth + 1, index * 2 + i, False, scores, h, alpha, beta)
+            best = max(best, val)
+            alpha = max(alpha, best)
+            if beta <= alpha: break
+        return best
+    else:
+        best = math.inf
+        for i in range(2):
+            val = alpha_beta(depth + 1, index * 2 + i, True, scores, h, alpha, beta)
+            best = min(best, val)
+            beta = min(beta, best)
+            if beta <= alpha: break
+        return best
+
+Decsion Tree
+
+     # The algorithm selects the best feature using:
+     Information_Gain = Entropy_Before - Entropy_After_Split
+
+
+     
