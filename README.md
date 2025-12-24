@@ -83,4 +83,18 @@ Min-Max
             val = minimax(depth + 1, node_index * 2 + i, True, scores, h)
             best = min(best, val)
         return best
-                
+
+        
+Greedy Best-First Search (GBFS)
+
+
+        while pq:
+        
+         h, node, path = heapq.heappop(pq)
+    
+    if node == goal:
+        return path
+
+    for neighbor in graph[node]:
+        priority = heuristics[neighbor]
+        heapq.heappush(pq, (priority, neighbor, path + [neighbor]))
