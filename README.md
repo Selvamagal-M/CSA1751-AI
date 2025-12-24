@@ -127,5 +127,13 @@ Decsion Tree
      # The algorithm selects the best feature using:
      Information_Gain = Entropy_Before - Entropy_After_Split
 
+Neural Network
+
+    for i in range(10000):
+    output = 1 / (1 + np.exp(-np.dot(inputs, weights)))
+    error = targets - output
+    adjustment = error * (output * (1 - output))
+    weights += np.dot(inputs.T, adjustment)
+
 
      
